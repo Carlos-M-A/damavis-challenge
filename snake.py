@@ -1,6 +1,40 @@
 class Snake:
+    """This Snake class solves the Damavis Challenge of calculate the
+    number of availables different paths with lengh 'depth' that the
+    snake can do on the board
+
+    Carlos solution
+    """
 
     def number_of_available_different_paths(self, board: list, snake:list, depth:int) -> int:
+        """Calculates the number of availables different paths with a specified
+        'depth' that the 'snake' can do on the 'board'.
+
+        Uses backtracking to find every available paths and return the amount
+        
+        Complexity: T(n) = O(3**n)  <<wrost case>>
+                    S(n) = O(log n)
+                    *n = paths' depth
+
+        Attributes:
+            board (list): indicates de size of the board
+                board[0]= number of rows, board[1]= number of colums
+                1 <= board[0], board[1] <= 20
+            snake (list): indicates de positions where the snake is lain on the board
+                every snake's item must be a list of 2 values: [row, column]
+                every snake's item indicates a position inside the board
+                every snake's item must be adjacent to the previous item
+                3 <= len(snake) <= 7
+            depth: length of the paths that we want to count
+                1 <= length <= 20
+
+        Raises:
+            ValueError: If at least one of the restrictions of the attributes
+                        is violated
+                
+        Returns:
+            The total amount of available paths
+        """
         self._check_inputs(board, snake, depth)
         
         self._board = board
