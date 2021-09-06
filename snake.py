@@ -1,21 +1,20 @@
-from _typeshed import SupportsLenAndGetItem
-
-
 class Snake:
 
     def number_of_available_different_paths(self, board: list, snake:list, depth:int) -> int:
         self._board = board
         self._directions = 'LRUD'
-        return self._count_available_different_paths(snake, depth)
+        return self._count_available_different_paths(snake, depth) % 1_000_000_007
     
     def _count_available_different_paths(self, snake:list, depth:int) -> int:
         if depth == 0:
             return 1
         else:
+            paths_quantity = 0
             for direction in self._directions:
                 if self._is_move_correct(snake, direction):
                     new_snake = self._new_snake(snake, direction)
-                    return self._count_available_different_paths(new_snake, depth - 1)
+                    paths_quantity += self._count_available_different_paths(new_snake, depth - 1)
+            return paths_quantity
     
     def _is_move_correct(self, snake:list, direction:str) -> bool:
         head = snake[0]
@@ -24,8 +23,11 @@ class Snake:
 
     def _is_new_head_in_a_correct_position(self, snake:list, new_head:list) -> bool:
         if new_head[0] < self._board[0] and new_head[1] < self._board[1]:
-            if new_head not in snake[:-1]:
-                return True
+            if new_head[0] >= 0 and new_head[1] >= 0:
+                if new_head not in snake[:-1]:
+                    return True
+                else:
+                    return False
             else:
                 return False
         else:
@@ -49,4 +51,4 @@ class Snake:
             new_head[0] -= 1
         elif direction == 'D':
             new_head[0] += 1
-    
+        return new_head
