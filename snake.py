@@ -1,6 +1,8 @@
 class Snake:
 
     def number_of_available_different_paths(self, board: list, snake:list, depth:int) -> int:
+        self._check_inputs(board, snake, depth)
+        
         self._board = board
         self._directions = 'LRUD'
         return self._count_available_different_paths(snake, depth) % 1_000_000_007
@@ -52,3 +54,28 @@ class Snake:
         elif direction == 'D':
             new_head[0] += 1
         return new_head
+
+    def _check_inputs(self, board:list, snake:list, depth:int):
+        if len(board) != 2:
+            raise ValueError('board length must be 2')
+        if board[0] < 1 or board[0] > 10 or board[1] < 1 or board[1] > 10:
+            raise ValueError("board's columns or rows must be between 1 and 10")
+        if len(snake) < 3 or len(snake) > 7:
+            raise ValueError('snake length must be between 3 and 7')
+        for part in snake:
+            self._check_snake_part(board, part)
+        self._check_snake_structure(snake)
+        if depth < 1 or depth > 20:
+            raise ValueError('depth must be between 1 and 20')
+
+    def _check_snake_part(self, board:list, part:list):
+        if len(part) != 2:
+            raise ValueError('Every part of snake must be a list with lenght=2')
+        if part[0] < 0 or part[0] > board[0] or part[1] < 0 or part[1] > board[1]:
+            raise ValueError('Every part of snake must be inside the board')
+    
+    def _check_snake_structure(self, snake):
+        for i, part in enumerate(snake[1:]):
+            check_sum = abs(snake[i][0] - part[0]) + abs(snake[i][1] - part[1])
+            if check_sum != 1:
+                raise ValueError("snake's structure is NOT correct")
