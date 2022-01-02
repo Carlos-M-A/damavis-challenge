@@ -1,0 +1,6 @@
+*.log
+*.pot
+*.pyc
+*.coverage
+__pycache__/
+media

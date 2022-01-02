@@ -1,2 +1,2 @@
-# Damavis Challenge
-Solution for the Damavis Challenge, 2021
+# Coding challenges
+Solutions for different coding challenges
