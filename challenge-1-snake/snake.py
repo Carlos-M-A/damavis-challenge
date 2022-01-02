@@ -1,9 +1,7 @@
 class Snake:
-    """This Snake class solves the Damavis Challenge of calculate the
+    """This Snake class solves the Snake Challenge, of calculating the
     number of availables different paths with lengh 'depth' that the
     snake can do on the board
-
-    Carlos solution
     """
 
     def number_of_available_different_paths(self, board: list, snake:list, depth:int) -> int:
