@@ -6,10 +6,10 @@ This is NOT a code challenge. You only must make UML models to analyze the probl
 
 To solve the challenge you must make the next models:
 * Analysis (Problem):
-** Domain model diagram: Entities and relationships of the "problem domain". Entities must contain the needed fields and relantionships' multiplicity must be specified.
-** Use case diagram: Actors and their use cases related.
+  * Domain model diagram: Entities and relationships of the "problem domain". Entities must contain the needed fields and relantionships' multiplicity must be specified.
+  * Use case diagram: Actors and their use cases related.
 * Design (Solution):
-** Database entity-relationship diagram: Diagram of tables, fields and dependencies for the possible system's database.
+  * Database entity-relationship diagram: Diagram of tables, fields and dependencies for the possible system's database.
 
 
 ## Definition of the problem
