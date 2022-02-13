@@ -7,7 +7,9 @@
 
 def count_letters(string):
     """It counts the amount of each letter in the string.
-
+        Performance:
+            n = length of string
+            T(n) = O(n)
     Args:
         string (str): The string about making the counting
 
@@ -34,6 +36,13 @@ def is_this_message_in_the_alphabet_soup(wanted_message, letters_in_soup):
        This do not work with diacritics. You must to remove the diacritics of the
        letters in the two arguments before you use this function.
 
+       Performance:
+           m = length of wanted_message
+           s = length of letters_in_soup
+           Best case 1 (soup smaller than message): T(m, s) = 1 < O(1)
+           Best case 2 (message is in the soup): T(m, s) = m + s/2 (On average) < O(m + s)
+           Worst case (message is not in the soup): T(m, s) = m + s < O(m + s)
+
        Args:
            wanted_message (str): The complete message which you want to make with
                                  the letters in the alphabet soup
@@ -42,14 +51,22 @@ def is_this_message_in_the_alphabet_soup(wanted_message, letters_in_soup):
        Returns:
            bool: True if the wanted message is possible. False if not.
     """
+    if len(wanted_message) > len(letters_in_soup):
+        return False
+    if len(wanted_message) == 0:
+        return True
+
     letter_counting_in_wanted_message = count_letters(wanted_message)
-    letter_counting_in_alphabet_soup = count_letters(letters_in_soup)
 
-    for letter, counting in letter_counting_in_wanted_message.items():
+    for letter in letters_in_soup:
         letter = letter.lower()
-        if not letter in letter_counting_in_alphabet_soup:
-            return False
-        if letter_counting_in_wanted_message[letter] > letter_counting_in_alphabet_soup[letter]:
-            return False
+        if not letter in letter_counting_in_wanted_message:
+            continue
+        letter_counting_in_wanted_message[letter] -= 1
+        if letter_counting_in_wanted_message[letter] == 0:
+            del letter_counting_in_wanted_message[letter]
 
-    return True
+        if len(letter_counting_in_wanted_message) == 0:
+            return True
+
+    return False
