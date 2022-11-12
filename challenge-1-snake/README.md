@@ -27,7 +27,7 @@ Here are all of the valid paths with a length of 3 that the snake can make:
 
 ## Contract Input Output.
 There are 3 input argument in this challenge:
-![Snake image example](https://raw.githubusercontent.com/Carlos-M-A/coding-challenges/main/challenge-1-snake/snake-representation.png)
+![Snake image example](./snake-representation.png)
 
 ### Input
 
