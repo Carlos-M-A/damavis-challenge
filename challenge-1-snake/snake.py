@@ -14,7 +14,7 @@ class Snake:
                     S(n) = O(log n)
                     *n = paths' depth
 
-        Attributes:
+        Args:
             board (list): indicates de size of the board
                 board[0]= number of rows, board[1]= number of colums
                 1 <= board[0], board[1] <= 20
@@ -25,13 +25,13 @@ class Snake:
                 3 <= len(snake) <= 7
             depth: length of the paths that we want to count
                 1 <= length <= 20
-
-        Raises:
-            ValueError: If at least one of the restrictions of the attributes
-                        is violated
                 
         Returns:
             The total amount of available paths
+            
+        Raises:
+            ValueError: If at least one of the restrictions of the attributes
+                        is violated
         """
         self._check_inputs(board, snake, depth)
         
