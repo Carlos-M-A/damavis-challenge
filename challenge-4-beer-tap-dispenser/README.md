@@ -22,7 +22,7 @@ The aim of this API is to allow organizers to set up these bar counters allowing
 So, once an attendee wants to drink a beer they just need to open the tap! The API will start counting how much flow
 comes out and, depending on the price, calculate the total amount of money.
 
-You could find the whole description of the API in the [OpenAPI description file](/api.spec.yaml).
+You could find the whole description of the API in the [OpenAPI description file](./api.spec.yaml).
 
 ### Workflow
 
